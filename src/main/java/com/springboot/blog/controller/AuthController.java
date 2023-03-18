@@ -21,10 +21,11 @@ public class AuthController {
     }
     @PostMapping(value = {"/login", "/signIn"})
     public ResponseEntity<JWTAuthResponse> login(@RequestBody LoginDto loginDto){
+
         String token = authService.login(loginDto);
         JWTAuthResponse jwtAuthResponse = new JWTAuthResponse();
         jwtAuthResponse.setAccessToken(token);
-        return ResponseEntity.ok((jwtAuthResponse));
+        return ResponseEntity.ok(jwtAuthResponse);
     }
     @PostMapping(value = {"/register", "/signUp"})
     public ResponseEntity<String> register(@RequestBody RegisterDto registerDto){
